@@ -49,3 +49,4 @@ class Avaliacao(Base):
     comentario = Column(String(300))
 
     usuario = relationship('Usuario')
+
