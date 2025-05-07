@@ -7,25 +7,25 @@ engine = create_engine('sqlite:///exercicios.db')
 Session = sessionmaker(bind=engine)
 session = Session()
 
-#1 Liste todos os produtos cadastrados no sistema.
+# 1. Liste todos os produtos cadastrados no sistema.
 def q01():
     produtos = session.query(Produto).all()
     for p in produtos:
         print(p.nome, p.preco)
 
-#2 Recupere todos os usuários ativos com mais de 18 anos.
+# 2. Recupere todos os usuários ativos com mais de 18 anos.
 def q02():
     usuarios = session.query(Usuario).filter(Usuario.ativo == True, Usuario.idade > 18).all()
     for u in usuarios:
         print(u.nome, u.idade)
 
-# =3. Obtenha todos os pedidos feitos depois de 01/03/2025 com quantidade superior a 5.
+# 3. Obtenha todos os pedidos feitos depois de 01/03/2025 com quantidade superior a 5.
 def q03():
     pedidos = session.query(Pedido).filter(Pedido.data_pedido > '2025-03-01', Pedido.quantidade > 5).all()
     for p in pedidos:
         print(p.id, p.quantidade, p.data_pedido)
 
-# 4. Encontr o primeiro usuario cadastrado no sistema.
+# 4. Encontre o primeiro usuário cadastrado no sistema.
 def q04():
     usuario = session.query(Usuario).first()
     if usuario:
@@ -135,7 +135,8 @@ def q21():
 
 # 22. Liste os usuários cadastrados, ignorando os 5 primeiros resultados.
 def q22():
-    usuarios = session.query(Usuario).offset(5).all()
+    usuarios = session.query(Usuario).off
+    set(5).all()
     for u in usuarios:
         print(u.nome)
 
@@ -202,7 +203,7 @@ def q33():
     for r in resultados:
         print(r[0], r[1], r[2])
 
-# As funções de exists(), add_columns(), group_by(), having() e outras podem ser feitas de maneira similar.
+
 q01()
 q02()
 q03()
