@@ -4,6 +4,8 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship, declarative_base
 from datetime import datetime
+from sqlalchemy.ext.hybrid import hybrid_property, _HybridSetterType
+
 
 Base = declarative_base()
 
@@ -15,6 +17,9 @@ class Usuario(Base):
     idade = Column(Integer)
     ativo = Column(Boolean, default=True)
     pedidos = relationship('Pedido', back_populates='usuario')
+    @hybrid_property
+    def dominio(self):
+        return self.email
 
 class Produto(Base):
     __tablename__ = 'produtos'
@@ -24,6 +29,12 @@ class Produto(Base):
     categoria = Column(String(50))
     estoque = Column(Integer, default=0)
     criado_em = Column(DateTime, default=datetime.now)
+    @hybrid_property
+    def valor_estoque(self):
+        return self.preco * self.estoque
+    
+
+
 
 class Pedido(Base):
     __tablename__ = 'pedidos'

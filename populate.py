@@ -32,6 +32,7 @@ produtos = [
     Produto(nome='Caneta Esferográfica', preco=2.5, categoria='papelaria', estoque=100),
     Produto(nome='Notebook', preco=3500.0, categoria='eletrônicos', estoque=3),
     Produto(nome='Livro SQL', preco=95.0, categoria='livros', estoque=8)
+    
 ]
 session.add_all(produtos)
 
